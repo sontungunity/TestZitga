@@ -78,6 +78,7 @@ public class ManagerGame : MonoBehaviour
             displayButton.SetIndexSelect(1);
         }
         else {
+            InGameManager.Instance.Hide();
             resultView.gameObject.SetActive(true);
             txtMeshPro.SetText($" Khong co duong di toi day");
             DOVirtual.DelayedCall(1f, () => {
@@ -93,6 +94,7 @@ public class ManagerGame : MonoBehaviour
     }
 
     public void OnShowResultView() {
+        InGameManager.Instance.Hide();
         resultView.gameObject.SetActive(true);
         int amoutStart = Random.Range(1,4);
         txtMeshPro.SetText($"You get {amoutStart} <sprite=\"stage_star1\" name=\"stage_star1\">");

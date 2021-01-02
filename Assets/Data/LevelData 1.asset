@@ -667,7 +667,7 @@ MonoBehaviour:
     left: 1
     top: 0
     right: 1
-    botton: 1
+    botton: 0
   - row: 10
     col: 9
     left: 1
@@ -720,12 +720,12 @@ MonoBehaviour:
     col: 7
     left: 0
     top: 1
-    right: 0
-    botton: 1
+    right: 1
+    botton: 0
   - row: 11
     col: 8
-    left: 0
-    top: 1
+    left: 1
+    top: 0
     right: 1
     botton: 0
   - row: 11
@@ -779,7 +779,7 @@ MonoBehaviour:
   - row: 12
     col: 7
     left: 1
-    top: 1
+    top: 0
     right: 0
     botton: 1
   - row: 12
