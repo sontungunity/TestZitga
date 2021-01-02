@@ -4274,7 +4274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &370386140
 Transform:
   m_ObjectHideFlags: 0
@@ -7720,7 +7720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &602709522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22804,6 +22804,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 333644537}
   mainBug: {fileID: 934334340}
   pointTaget: {fileID: 2026314115}
+  speed: 10
 --- !u!4 &1929853778
 Transform:
   m_ObjectHideFlags: 0

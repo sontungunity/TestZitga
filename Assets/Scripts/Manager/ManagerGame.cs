@@ -24,7 +24,7 @@ public class ManagerGame : MonoBehaviour
 
     public void Show(int level) {
         levelData = ManagerData.Instance.LevelDatas.GetlevelDataByIndex(level);
-        indexTaget = levelData.IndexTaget;
+        indexTaget = Random.Range(0,130);
         GenderCell();
         DOVirtual.DelayedCall(0.1f,()=> {
             InGameManager.Instance.Show(lstCellView[0].GetComponent<RectTransform>().position, lstCellView[indexTaget].GetComponent<RectTransform>().position);
