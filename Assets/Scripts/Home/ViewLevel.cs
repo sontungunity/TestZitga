@@ -66,6 +66,6 @@ public class ViewLevel : MonoBehaviour
     }
 
     public void OnSelected() {
-        ManagerScene.Instance.OnSelectLevel(level);
+        ManagerScene.Instance.OnShowInGame(level);
     }
 }

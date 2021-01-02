@@ -17,17 +17,21 @@ public class ManagerScene : SingletonBlin<ManagerScene>
         manGame.Init();
 
         //Defaul show home
-        manHome.gameObject.SetActive(true);
-        manGame.gameObject.SetActive(false);
-        manHome.Show();
+        OnShowHome();
     }
 
-    public void OnSelectLevel(int level) {
+    public void OnShowInGame(int level) {
         manHome.gameObject.SetActive(false);
         manGame.gameObject.SetActive(true);
 
         manGame.Show(level);
 
+    }
+
+    public void OnShowHome() {
+        manHome.gameObject.SetActive(true);
+        manGame.gameObject.SetActive(false);
+        manHome.Show();
     }
 
 }

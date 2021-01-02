@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
+
 public class InGameManager : SingletonBlin<InGameManager>
 {
     [SerializeField]private GameObject display;
@@ -9,14 +11,14 @@ public class InGameManager : SingletonBlin<InGameManager>
     [SerializeField]private Transform mainBug;
     [SerializeField]private Transform pointTaget;
 
-    [SerializeField]private float speed = 10f; 
-    
     private List<Vector3> checkpoint = new List<Vector3>();
-    
-    public void Show(Vector3 positionBug, Vector3 posionTarget) {
+    private Action OnComplate;
+    public void Show(Vector3 positionBug, Vector3 posionTarget, Action OnComplate) {
         display.SetActive(true);
         mainBug.position = positionBug;
         pointTaget.position = posionTarget;
+        this.OnComplate = OnComplate;
+        this.lineRenderer.positionCount = 0;
     }
 
     public void Hide() {
@@ -33,11 +35,13 @@ public class InGameManager : SingletonBlin<InGameManager>
         this.checkpoint.AddRange(checkpoint);
 
         this.lineRenderer.SetPositions(checkpoint.ToArray());
+    }
 
-        DOVirtual.DelayedCall(1f,()=> {
-            mainBug.DOPath(checkpoint.ToArray(), speed, PathType.Linear, PathMode.TopDown2D)
-            .SetLookAt(0.1f)
-            .SetLoops(-1,LoopType.Restart);
+    public void OnAutoMove() {
+        DOVirtual.DelayedCall(0.5f, () => {
+            mainBug.DOPath(checkpoint.ToArray(), checkpoint.Count*0.5f, PathType.Linear, PathMode.TopDown2D)
+            .SetLookAt(0.1f).OnComplete(()=> { OnComplate?.Invoke(); });
         });
     }
+
 }
