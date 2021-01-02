@@ -15,6 +15,8 @@ public class CellView : MonoBehaviour
 
     //Set up fine way
     private List<int> lstIndexCellConnect;
+
+    public CellData CellData => cellData;
     public void Init(int indexCell,List<CellView> lstCellView) {
         this.indexCell = indexCell;
         this.lstCellView = lstCellView;

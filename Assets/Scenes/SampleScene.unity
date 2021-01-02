@@ -2130,7 +2130,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32768
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4303,7 +4303,7 @@ GameObject:
   - component: {fileID: 371269935}
   - component: {fileID: 371269937}
   - component: {fileID: 371269936}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: TMP SubMeshUI [TextMeshPro/Sprite]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4503,7 +4503,7 @@ GameObject:
   - component: {fileID: 377604438}
   - component: {fileID: 377604440}
   - component: {fileID: 377604439}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17157,10 +17157,11 @@ MonoBehaviour:
   displayButton: {fileID: 1106821777}
   btnFineWay: {fileID: 1191704334}
   btnAuto: {fileID: 439531576}
-  indexTaget: 0
   lstPath: 
   resultView: {fileID: 1801508545}
   txtMeshPro: {fileID: 377604439}
+  indexCur: 0
+  indexTaget: 0
 --- !u!1 &1367667096
 GameObject:
   m_ObjectHideFlags: 0
@@ -17172,7 +17173,7 @@ GameObject:
   - component: {fileID: 1367667097}
   - component: {fileID: 1367667099}
   - component: {fileID: 1367667098}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21725,7 +21726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1801508546}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: ResultView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
