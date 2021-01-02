@@ -11,8 +11,6 @@ public class LevelData : ScriptableObject {
 
     public IEnumerable<CellData> CellDatas => celldatas;
 
-    public int IndexTaget => indexTaget;
-
     public LevelData() {
         index = 0;
         celldatas = new List<CellData>();

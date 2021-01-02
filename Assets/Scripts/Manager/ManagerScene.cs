@@ -31,6 +31,7 @@ public class ManagerScene : SingletonBlin<ManagerScene>
     public void OnShowHome() {
         manHome.gameObject.SetActive(true);
         manGame.gameObject.SetActive(false);
+        InGameManager.Instance.Hide();
         manHome.Show();
     }
 

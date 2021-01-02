@@ -7,6 +7,7 @@ public class ManagerGame : MonoBehaviour
 {
 
     private LevelData levelData;
+    private int level;
     [SerializeField] private List<CellView> lstCellView;
 
     [SerializeField] private ObjectsDisplay displayButton;
@@ -32,6 +33,7 @@ public class ManagerGame : MonoBehaviour
     }
 
     public void Show(int level) {
+        this.level = level;
         levelData = ManagerData.Instance.LevelDatas.GetlevelDataByIndex(level);
         indexTaget = Random.Range(0,130);
         displayButton.SetIndexSelect(0);
@@ -65,6 +67,7 @@ public class ManagerGame : MonoBehaviour
 
     public void OnFineWay() {
         lstPath = new List<int>();
+        displayButton.SetIndexSelect(2);
         bool canFineway = lstCellView[0].FinePoint(-1, indexTaget, lstPath);
         if(canFineway) {
             List<Vector3> lstPosiotn = new List<Vector3>();
@@ -72,8 +75,16 @@ public class ManagerGame : MonoBehaviour
                 lstPosiotn.Add(lstCellView[lstPath[i]].transform.position);
             }
             InGameManager.Instance.DrawLine(lstPosiotn);
+            displayButton.SetIndexSelect(1);
         }
-        displayButton.SetIndexSelect(1);
+        else {
+            resultView.gameObject.SetActive(true);
+            txtMeshPro.SetText($" Khong co duong di toi day");
+            DOVirtual.DelayedCall(1f, () => {
+                ManagerScene.Instance.OnShowHome();
+            });
+        }
+        
     }
 
     public void OnAutoMove() {
@@ -85,10 +96,9 @@ public class ManagerGame : MonoBehaviour
         resultView.gameObject.SetActive(true);
         int amoutStart = Random.Range(1,4);
         txtMeshPro.SetText($"You get {amoutStart} <sprite=\"stage_star1\" name=\"stage_star1\">");
-        DOVirtual.DelayedCall(1f,()=> { ManagerScene.Instance.OnShowHome(); });
-    }
-
-    private void OnDisable() {
-        InGameManager.Instance.Hide();
+        ManagerData.Instance.PlayerInfo.Uplevel(new LevelDataSave(this.level,amoutStart));
+        DOVirtual.DelayedCall(1f,()=> {
+            ManagerScene.Instance.OnShowHome(); 
+        });
     }
 }

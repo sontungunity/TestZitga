@@ -14,6 +14,8 @@ public class ViewLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtLevel;
     [SerializeField] private GameObject spiderWeb;
 
+    [SerializeField] private ObjectsDisplay lstStar;
+    private LevelDataSave levelSave;
     private PlayerInfo playerInfo;
 
     private int level;
@@ -25,11 +27,13 @@ public class ViewLevel : MonoBehaviour
 
     public void Init(int level) {
         this.level = level;
+        this.levelSave = ManagerData.Instance.GetLevelSave(level);
         Show();
     }
 
     public void SetLevel(int level) {
         this.level = level;
+        this.levelSave = ManagerData.Instance.GetLevelSave(level);
         Show();
     }
 
@@ -37,6 +41,8 @@ public class ViewLevel : MonoBehaviour
         Show_Line();
 
         Show_Info();
+
+        Show_Star();
     }
 
     public void Show_Line() {
@@ -65,6 +71,18 @@ public class ViewLevel : MonoBehaviour
         }
     }
 
+    public void Show_Star() {
+        if(playerInfo.LevelUnlock < level || levelSave == null) {
+            lstStar.SetIndexSelect(3);
+        }
+        else {
+            List<int> lst = new List<int>();
+            for(int i = 0;i < levelSave.AmountStar; i++) {
+                lst.Add(i);
+            }
+            lstStar.SetIndexSelect(lst.ToArray());
+        }
+    }
     public void OnSelected() {
         ManagerScene.Instance.OnShowInGame(level);
     }

@@ -33,13 +33,12 @@ public class InGameManager : SingletonBlin<InGameManager>
 
         this.checkpoint = new List<Vector3>();
         this.checkpoint.AddRange(checkpoint);
-
         this.lineRenderer.SetPositions(checkpoint.ToArray());
     }
 
     public void OnAutoMove() {
         DOVirtual.DelayedCall(0.5f, () => {
-            mainBug.DOPath(checkpoint.ToArray(), checkpoint.Count*0.5f, PathType.Linear, PathMode.TopDown2D)
+            mainBug.DOPath(checkpoint.ToArray(), checkpoint.Count*0.25f, PathType.Linear, PathMode.TopDown2D)
             .SetLookAt(0.1f).OnComplete(()=> { OnComplate?.Invoke(); });
         });
     }

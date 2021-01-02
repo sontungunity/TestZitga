@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagerData : SingletonBlin<ManagerData>
-{
+public class ManagerData : SingletonBlin<ManagerData> {
     private const string playInfo = "playInfo";
 
     [SerializeField] private LevelDatas levelDatas;
@@ -14,6 +13,10 @@ public class ManagerData : SingletonBlin<ManagerData>
 
     public int GetAmountLevel() {
         return 1000;
+    }
+
+    public LevelDataSave GetLevelSave(int index) {
+        return playerInfo.lstLevelDataSave.Find(x=>x.Level == index);
     }
 
     protected override void Awake() {
@@ -46,11 +49,14 @@ public class ManagerData : SingletonBlin<ManagerData>
         }
         else {
             playerInfo = new PlayerInfo();
+            playerInfo.Random();
         }
     }
 
     private void SaveData() {
-
+        var dataJson = JsonUtility.ToJson(playerInfo);
+        PlayerPrefs.SetString(playInfo, dataJson);
+        PlayerPrefs.Save();
     }
 
 }
